@@ -48,14 +48,17 @@ This interactive dashboard provides insights into customer segmentation and chur
 
 ## 📁 Project Structure
 
-├── README.md
-├── CustomerSegmentation.pbix # Power BI dashboard file
-├── data/
-│ └── customer_data.csv # Source dataset
-└── screenshots/
-├── dashboard_overview.png # Main dashboard screenshot
-└── churn_risk.png # Churn risk view screenshot
-
+- **README.md** - Project documentation
+- **CustomerSegmentation.pbix** - Power BI dashboard file
+- **Data/** - Source datasets
+  - OnlineRetail.csv
+  - rfm_results.csv
+  - rfm_with_predictions.csv
+- **screenshots/** - Dashboard images
+  - dashboard_overview.png
+  - churn_risk.png
+- **visualizations/** - Analysis charts
+- **RFM_Analysis.ipynb** - Jupyter notebook for RFM analysis
 
 ## 🚀 Getting Started
 
@@ -66,141 +69,92 @@ This interactive dashboard provides insights into customer segmentation and chur
 
 ### Installation
 
-1. Clone this repository:
+1. Clone this repository
 
-```bash
-git clone https://github.com/HariniJanga/customer-segmentation-dashboard.git
+2. Open the CustomerSegmentation.pbix file in Power BI Desktop
 
-Open the CustomerSegmentation.pbix file in Power BI Desktop
+3. Refresh data connections if using external data sources
 
-Refresh data connections if using external data sources
+## 📈 Dashboard Components
 
-📈 Dashboard Components
-1. Customer Count Card
+### 1. Customer Count Card
 Displays the total number of customers in the dataset (4,338)
 
-2. Segment Distribution Table
+### 2. Segment Distribution Table
 Lists customer counts for each segment:
+- At Risk
+- Champions
+- Lost Customers
+- Loyal Customers
+- Potential Loyalists
 
-At Risk
-
-Champions
-
-Lost Customers
-
-Loyal Customers
-
-Potential Loyalists
-
-3. Revenue by Segment (Pie Chart)
+### 3. Revenue by Segment
 Visual representation showing:
+- Champions: 6.26M (70.19%)
+- Loyal Customers: Revenue contribution
+- Potential Loyalists: Revenue share
+- At Risk: Revenue analysis
+- Lost Customers: Revenue tracking
 
-Champions: 6.26M (70.19%)
-
-Loyal Customers: Revenue contribution
-
-Potential Loyalists: Revenue share
-
-At Risk: Revenue analysis
-
-Lost Customers: Revenue tracking
-
-4. Churn Risk Analysis
+### 4. Churn Risk Analysis
 Risk categorization by customer segment:
+- Low Risk
+- Medium Risk
+- High Risk
 
-Low Risk
-
-Medium Risk
-
-High Risk
-
-5. Customer Segment Distribution
+### 5. Customer Segment Distribution
 Bar chart showing customer distribution across identified segments
 
-📊 Data Sources
+## 📊 Data Sources
+
 The dashboard analyzes customer data including:
+- Customer demographic information
+- Transaction history
+- Purchase patterns
+- Engagement metrics
+- Customer lifecycle data
 
-Customer demographic information
+**Dataset Details:**
+- **Source**: Synthetic dataset created for learning purposes
+- **Size**: 4,338 customer records
+- **Key Fields**: CustomerID, Segment, Revenue, LastPurchaseDate, ChurnFlag
 
-Transaction history
+## 🔍 Key Insights
 
-Purchase patterns
-
-Engagement metrics
-
-Customer lifecycle data
-
-Dataset Details:
-
-Source: Synthetic dataset created for learning purposes
-
-Size: 4,338 customer records
-
-Key Fields: CustomerID, Segment, Revenue, LastPurchaseDate, ChurnFlag/RiskScore
-Total Customers = DISTINCTCOUNT(Customers[CustomerID])
-
-Total Revenue = SUM(Sales[Revenue])
-
-Churn Risk Category =
-SWITCH (
-    TRUE(),
-    Customers[DaysSinceLastPurchase] > 180, "High Risk",
-    Customers[DaysSinceLastPurchase] > 90,  "Medium Risk",
-    "Low Risk"
-)
-
-Customer Segment =
-SWITCH (
-    TRUE(),
-    Customers[RFM_Score] >= 9, "Champions",
-    Customers[RFM_Score] >= 7, "Loyal Customers",
-    Customers[RFM_Score] >= 5, "Potential Loyalists",
-    Customers[RFM_Score] >= 3, "At Risk",
-    "Lost Customers"
-)
-🔍 Key Insights
 This dashboard enables stakeholders to:
+- Identify high-value customer segments for targeted marketing campaigns
+- Predict and prevent customer churn proactively
+- Optimize resource allocation based on segment profitability
+- Track customer retention metrics over time
+- Make data-driven decisions for customer engagement strategies
 
-Identify high-value customer segments for targeted marketing campaigns
+## 🔄 Future Enhancements
 
-Predict and prevent customer churn proactively
+- [ ] Add time-series analysis for trend identification
+- [ ] Implement predictive churn modeling with machine learning
+- [ ] Include customer lifetime value (CLV) calculations
+- [ ] Add real-time data refresh capabilities
+- [ ] Create drill-through pages for detailed segment analysis
 
-Optimize resource allocation based on segment profitability
+## 💡 Challenges & Learnings
 
-Track customer retention metrics over time
+- **Challenge**: Defining meaningful customer segments from raw transactional data
+  - **Approach**: Used RFM (Recency, Frequency, Monetary) logic to create data-driven segments
 
-Make data-driven decisions for customer engagement strategies
+- **Challenge**: Balancing dashboard complexity with usability
+  - **Approach**: Built a single-page overview with supporting visuals instead of overcrowding with too many charts
 
-🔄 Future Enhancements
- Add time-series analysis for trend identification
+## 👨‍💻 Author
 
- Implement predictive churn modeling with machine learning
+**Harini Janga**  
+- GitHub: [@HariniJanga](https://github.com/HariniJanga)  
+- LinkedIn: [Harini Janga](https://www.linkedin.com/in/harini-janga-210166236)  
+- Email: harinijanga04@gmail.com
 
- Include customer lifetime value (CLV) calculations
+## 📝 License
 
- Add real-time data refresh capabilities
-
- Create drill-through pages for detailed segment analysis
-
-💡 Challenges & Learnings
-Challenge: Defining meaningful customer segments from raw transactional data
-
-Approach: Used RFM (Recency, Frequency, Monetary) logic to create data-driven segments
-
-Challenge: Balancing dashboard complexity with usability
-
-Approach: Built a single-page overview with supporting visuals instead of overcrowding with too many charts
-
-👨‍💻 Author
-Harini Janga
-
-GitHub: @HariniJanga
-
-LinkedIn: Harini Janga
-
-Email: harinijanga04@gmail.com
-
-📝 License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-Note: This dashboard is designed for learning and portfolio purposes. It demonstrates end-to-end skills in data modeling, DAX calculations, and Power BI dashboard design focused on customer analytics and churn prediction.
+---
+
+**Note**: This dashboard is designed for learning and portfolio purposes. It demonstrates end-to-end skills in data modeling, DAX calculations, and Power BI dashboard design focused on customer analytics and churn prediction.
